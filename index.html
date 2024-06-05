@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Welcome Application With Validation</title>
+        <style>
+            *{font-size: 50px; font-family: Calibri;}
+            body{background-color: rebeccapurple;}
+            h1{background-color: black;color: white; width: 400px; border-radius: 30px;}
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>Welcome App</h1>
+            <form onsubmit="check()">
+            <input type="text" placeholder="enter your name" id="name"/>
+            <br><br>
+            <input type="submit"/>
+            </form>
+            <h2 id="msg">
+                <script>
+                    function check()
+                    {
+                        event.preventDefault()
+                        let name = document.getElementById("name");
+                        let msg = document.getElementById("msg");
+
+                        if (name.value == "")
+                        {
+                            alert("Name cannot be blank")
+                            msg.innerHTML = "";
+                            num.focus();
+                            return;
+                        }
+
+                        if (name.value.trim() == "")
+                        {
+                            alert("Name cannot be blank spaces")
+                            msg.innerHTML = "";
+                            name.value = ""
+                            num.focus();
+                            return;
+                        }
+
+                        if (! name.value.match(/^[A-Za-z ]+$/))
+                        {
+                            alert("Name should contain only alphabets")
+                            msg.innerHTML = "";
+                            name.value = ""
+                            num.focus();
+                            return;
+                        }
+
+                        let d = new Date();
+                        let hr = d.getHours();
+                        let ans = "";
+                        if (hr<12)              ans = "GM " + name.value;
+                        else if (hr<16)         ans = "GA " + name.value;
+                        else                    ans = "GE " + name.value;
+                        
+                        msg.innerHTML = ans;
+                    }
+                </script>
+            </h2>
+        </center>
+    </body>
+</html>
